@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+import com.nsa.approvedcomment.TemplateResponseEntity;
 import com.nsa.approvedcomment.model.Comment;
 import com.nsa.approvedcomment.repo.CommentRepository;
 
@@ -27,35 +28,35 @@ public class CommentController {
 	@Autowired
 	CommentRepository commentRepository;
 
-	// samo admin moze da gleda komentare u recenziji
-	// @Secured({"ROLE_ADMIN"})
+	//svi mogu da gledaju odobrene komentare
+	//@PreAuthorize("hasIpAddress('192.168.0.0/16')")
 	@RequestMapping(value = { "/comment", "/komentar" }, method = RequestMethod.GET)
 	public ResponseEntity<Iterable<Comment>> getAll() {
 
-		return new ResponseEntity(commentRepository.findAll(), HttpStatus.OK);
+		return new TemplateResponseEntity(commentRepository.findAll(), HttpStatus.OK);
 	}
 
-	// samo admin moze da gleda komentare u recenziji
+	//svi mogu da gledaju odobrene komentare
 	@RequestMapping(value = { "/comment/{id}", "/komentar/{id}" }, method = RequestMethod.GET)
 	public ResponseEntity<Comment> get(@PathVariable(value = "id") Integer id) {
-		return new ResponseEntity(commentRepository.findById(id), HttpStatus.OK);
+		return new TemplateResponseEntity(commentRepository.findById(id), HttpStatus.OK);
 	}
 
-	// svako moze da dodaje komentare
+	// komentari mogu biti dodati samo sa odredjene IP adrese 
 	@RequestMapping(value = { "/comment", "/komentar" }, method = RequestMethod.POST)
-	public ResponseEntity<Comment> add(Comment comment) {
+	public ResponseEntity<Comment> add(@RequestBody Comment comment) {
 
-		return new ResponseEntity(commentRepository.save(comment), HttpStatus.OK);
+		return new TemplateResponseEntity(commentRepository.save(comment), HttpStatus.OK);
 	}
 
-	// ova opcija je samo formalna, ne slaze sa logikom aplikacije
+	// komentari mogu biti osvezenni samo sa odredjene IP adrese
 	@RequestMapping(value = { "/comment", "/komentar" }, method = RequestMethod.PUT)
 	public ResponseEntity<Comment> update(Comment comment) {
 
-		return new ResponseEntity(commentRepository.save(comment), HttpStatus.OK);
+		return new TemplateResponseEntity(commentRepository.save(comment), HttpStatus.OK);
 	}
 
-	// samo admin moze da brise komentare
+	//komentari mogu biti brisani samo sa odredjene IP adrese
 	// @Secured({"ROLE_ADMIN"})
 	@RequestMapping(value = { "/comment/{id}", "komentar/{id}" }, method = RequestMethod.DELETE)
 	public ResponseEntity<String> delete(@PathVariable(value = "id") Integer id) {
@@ -63,17 +64,18 @@ public class CommentController {
 		try {
 			commentRepository.deleteById(id);
 		} catch (Exception e) {
-			return new ResponseEntity(e.getMessage(), HttpStatus.NOT_FOUND);
+			return new TemplateResponseEntity(e.getMessage(), HttpStatus.NOT_FOUND);
 		}
-		return new ResponseEntity("sve je u redu", HttpStatus.OK);
+		return new TemplateResponseEntity("sve je u redu", HttpStatus.OK);
 	}
 
-	// samo admin moze da vidi komentare u recenziji za datu vest
+	// svi mogu da vide komentare za datu vest
 	@RequestMapping(value = { "/comment/news/{id}", "/komentar/vest/{id}" }, method = RequestMethod.GET)
 	public ResponseEntity<Iterable<Comment>> getAllCommentForGivenNews(@PathVariable(value = "id") Integer newsID) {
-		return new ResponseEntity(commentRepository.findByNewsID(newsID), HttpStatus.OK);
+		return new TemplateResponseEntity(commentRepository.findByNewsID(newsID), HttpStatus.OK);
 	}
 
+	//komentari mogu biti odobreni samo sa odredjene IP adrese
 	@RequestMapping(value = { "/comment-approved", "/komentar-odobren" }, method = RequestMethod.POST)
 	public HttpStatus approveComment(@RequestBody Comment comment) {
 

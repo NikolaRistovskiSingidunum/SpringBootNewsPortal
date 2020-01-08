@@ -8,6 +8,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.springframework.web.multipart.MultipartFile;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 enum NewsCategory {
 	  SPORT,
 	  RAZONODA,
@@ -44,6 +48,10 @@ public class News {
 	
 	@Column(nullable = false, updatable = true, insertable = true, length = 50)
 	private String author;
+	
+	@javax.persistence.Transient
+	@JsonIgnore
+	private MultipartFile img;
 	
 	protected News() { };
 
@@ -123,6 +131,14 @@ public class News {
 
 	public void setAuthor(String author) {
 		this.author = author;
+	}
+
+	public MultipartFile getImg() {
+		return img;
+	}
+
+	public void setImg(MultipartFile img) {
+		this.img = img;
 	};
 	
 	

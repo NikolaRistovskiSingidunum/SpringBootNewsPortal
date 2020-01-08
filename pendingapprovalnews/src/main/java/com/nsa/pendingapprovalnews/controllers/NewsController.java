@@ -53,21 +53,25 @@ public class NewsController {
 	public ResponseEntity<News> get(@PathVariable(value = "id") Integer id) {
 		return new ResponseEntity(newsRepository.findById(id), HttpStatus.OK);
 	}
-	// svako moze da dodaje komentare
+	// svako moze da dodaje vesti
 	@RequestMapping(value = { "/news", "/vest" }, method = RequestMethod.POST)
-	public ResponseEntity<News> add(News news, @RequestParam("file") MultipartFile file) throws IOException {
+	public ResponseEntity<News> add(News news) throws IOException {
 
 		  News savednews = newsRepository.save(news);
-		  file.transferTo(Paths.get(System.getProperty("user.dir")+"/src/main/resources/static/"+savednews.getNewsID()));		
+		  news.getImg().transferTo(Paths.get(System.getProperty("user.dir")+"/src/main/resources/static/"+savednews.getNewsID()));		
 		  
-		  System.out.println(Paths.get(System.getProperty("user.dir")+"aa"));
+		  //System.out.println(Paths.get(System.getProperty("user.dir")+"aa"));
 		return new ResponseEntity(savednews, HttpStatus.OK);
 	}
-	// ova opcija je samo formalna, ne slaze sa logikom aplikacije
+	// admin moza da menja vest koja ceka odbrenje
 	@RequestMapping(value = { "/news", "/vest" }, method = RequestMethod.PUT)
-	public ResponseEntity<News> update(News news) {
+	public ResponseEntity<News> update(News news) throws IllegalStateException, IOException {
 
-		return new ResponseEntity(newsRepository.save(news), HttpStatus.OK);
+		 News updatednews = newsRepository.save(news);
+		 news.getImg().transferTo(Paths.get(System.getProperty("user.dir")+"/src/main/resources/static/"+updatednews.getNewsID()));		
+		 
+		
+		return new ResponseEntity(updatednews, HttpStatus.OK);
 	}
 	
 	// samo admin moze da brise komentare
@@ -77,23 +81,25 @@ public class NewsController {
 
 		try {
 			newsRepository.deleteById(id);
+			File img = new File(System.getProperty("user.dir")+"/src/main/resources/static/"+id);
+			img.delete();
 		} catch (Exception e) {
 			return new ResponseEntity(e.getMessage(), HttpStatus.NOT_FOUND);
 		}
 		return new ResponseEntity("sve je u redu", HttpStatus.OK);
 	}
 	
-	@RequestMapping(value = { "/news-approved", "/vest-odobrena" }, method = RequestMethod.POST)
-	public HttpStatus approveNews(@RequestBody News news) {
-
-		try {
-			newsRepository.save(news);
-			return HttpStatus.OK;
-		} catch (Exception e) {
-			return HttpStatus.NO_CONTENT;
-		}
-
-	}
+//	@RequestMapping(value = { "/news-approved", "/vest-odobrena" }, method = RequestMethod.POST)
+//	public HttpStatus approveNews(@RequestBody News news) {
+//
+//		try {
+//			newsRepository.save(news);
+//			return HttpStatus.OK;
+//		} catch (Exception e) {
+//			return HttpStatus.NO_CONTENT;
+//		}
+//
+//	}
 	
 	@Secured({ "ROLE_ADMIN" })
 	@RequestMapping(value = { "/approve-news/{id}", "/odobri-vest/{id}" }, method = RequestMethod.GET)

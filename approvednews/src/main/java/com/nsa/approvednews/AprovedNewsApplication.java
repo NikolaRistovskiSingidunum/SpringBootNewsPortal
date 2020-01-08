@@ -8,10 +8,10 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication(exclude={SecurityAutoConfiguration.class})
 //@EnableJpaRepositories(basePackages={"com.nsa.demo"})
-public class AprovedCommentApplication {
+public class AprovedNewsApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(AprovedCommentApplication.class, args);
+		SpringApplication.run(AprovedNewsApplication.class, args);
 	}
 
 }

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+import com.nsa.demo.penningapprovalcomments.TemplateResponseEntity;
 import com.nsa.demo.penningapprovalcomments.model.AuthUserDetails;
 import com.nsa.demo.penningapprovalcomments.model.Comment;
 import com.nsa.demo.penningapprovalcomments.repo.CommentRepository;
@@ -31,27 +32,28 @@ public class CommentController {
 	@RequestMapping(value = { "/comment", "/komentar" }, method = RequestMethod.GET)
 	public ResponseEntity<Iterable<Comment>> getAll() {
 
-		return new ResponseEntity(commentRepository.findAll(), HttpStatus.OK);
+		return new TemplateResponseEntity(commentRepository.findAll(), HttpStatus.OK);
+		//return new ResponseEntity(commentRepository.findAll(), HttpStatus.OK);
 	}
 
 	// samo admin moze da gleda komentare u recenziji
 	@RequestMapping(value = { "/comment/{id}", "/komentar/{id}" }, method = RequestMethod.GET)
 	public ResponseEntity<Comment> get(@PathVariable(value = "id") Integer id) {
-		return new ResponseEntity(commentRepository.findById(id), HttpStatus.OK);
+		return new TemplateResponseEntity(commentRepository.findById(id), HttpStatus.OK);
 	}
 
 	// svako moze da dodaje komentare
 	@RequestMapping(value = { "/comment", "/komentar" }, method = RequestMethod.POST)
 	public ResponseEntity<Comment> add(Comment comment) {
 
-		return new ResponseEntity(commentRepository.save(comment), HttpStatus.OK);
+		return new TemplateResponseEntity(commentRepository.save(comment), HttpStatus.OK);
 	}
 
 	// ova opcija je samo formalna, ne slaze sa logikom aplikacije
 	@RequestMapping(value = { "/comment", "/komentar" }, method = RequestMethod.PUT)
 	public ResponseEntity<Comment> update(Comment comment) {
 
-		return new ResponseEntity(commentRepository.save(comment), HttpStatus.OK);
+		return new TemplateResponseEntity(commentRepository.save(comment), HttpStatus.OK);
 	}
 
 	// samo admin moze da brise komentare
@@ -62,15 +64,15 @@ public class CommentController {
 		try {
 			commentRepository.deleteById(id);
 		} catch (Exception e) {
-			return new ResponseEntity(e.getMessage(), HttpStatus.NOT_FOUND);
+			return new TemplateResponseEntity(e.getMessage(), HttpStatus.NOT_FOUND);
 		}
-		return new ResponseEntity("sve je u redu", HttpStatus.OK);
+		return new TemplateResponseEntity("sve je u redu", HttpStatus.OK);
 	}
 
 	// samo admin moze da vidi komentare u recenziji za datu vest
 	@RequestMapping(value = { "/comment/news/{id}", "/komentar/vest/{id}" }, method = RequestMethod.GET)
 	public ResponseEntity<Iterable<Comment>> getAllCommentForGivenNews(@PathVariable(value = "id") Integer newsID) {
-		return new ResponseEntity(commentRepository.findByNewsID(newsID), HttpStatus.OK);
+		return new TemplateResponseEntity(commentRepository.findByNewsID(newsID), HttpStatus.OK);
 	}
 
 	@Secured({ "ROLE_ADMIN" })
@@ -95,7 +97,8 @@ public class CommentController {
 			comment.setAdminID(adminID);
 			RestTemplate template = new RestTemplate();
 			HttpStatus status;
-			status = template.postForObject("http://localhost:9090/comment-approved", comment, HttpStatus.class);
+			//TemplateResponseEntity response;
+			status = template.postForObject("http://localhost:9090/comment", comment, TemplateResponseEntity.class).getStatusCode();
 			if (status == HttpStatus.OK) {
 				try {
 					commentRepository.deleteById(id);
@@ -112,5 +115,21 @@ public class CommentController {
 		}
 
 	}
+//	
+//	@RequestMapping(value = { "/test/{id}", "/a/{id}" }, method = RequestMethod.GET)
+//	public ResponseEntity<Comment> rere(@PathVariable(value = "id") Integer id) {
+//
+//		RestTemplate template = new RestTemplate();
+//		Comment comment = commentRepository.findById(id).get();
+//		comment.setAdminID(3);
+//		
+//		TemplateResponseEntity<Comment> resposne = 
+//				template.postForObject("http://localhost:9090/comment", comment, TemplateResponseEntity.class);
+//		
+//		
+//		return new TemplateResponseEntity(comment, HttpStatus.OK);
+//	}
+	
+
 
 }

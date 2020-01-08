@@ -8,6 +8,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.springframework.data.annotation.Transient;
+import org.springframework.web.multipart.MultipartFile;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 
 
@@ -47,11 +52,16 @@ public class News {
 	@Column(nullable = false, updatable = true, insertable = true, length = 50)
 	private String author; 
 
+	@javax.persistence.Transient
+	@JsonIgnore
+	private MultipartFile img;
 	
 	protected News() {}
 
 	
-	public News(LocalDateTime date, String text, Integer adminID, NewsCategory newsCategory, String title, String description, String author) {
+	public News(LocalDateTime date, String text, Integer adminID,
+			NewsCategory newsCategory, String title, 
+			String description, String author) {
 		super();
 		this.date = date;
 		this.text = text;
@@ -60,6 +70,7 @@ public class News {
 		this.title = title;
 		this.description = description;
 		this.author = author;
+		
 	}
 
 	public NewsCategory getNewsCategory() {
@@ -133,6 +144,16 @@ public class News {
 
 	public void setAuthor(String author) {
 		this.author = author;
+	}
+
+
+	public MultipartFile getImg() {
+		return img;  
+	}
+
+
+	public void setImg(MultipartFile img) {
+		this.img = img;
 	};
 	
 	
