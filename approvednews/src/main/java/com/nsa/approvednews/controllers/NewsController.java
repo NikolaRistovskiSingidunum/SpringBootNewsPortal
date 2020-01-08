@@ -36,13 +36,13 @@ public class NewsController {
 	@RequestMapping(value = { "/news", "/vest" }, method = RequestMethod.GET)
 	public ResponseEntity<Iterable<News>> getAll() {
 
-		return new TemplateResponseEntity(newsRepository.findAll(), HttpStatus.OK);
+		return new ResponseEntity(newsRepository.findAll(), HttpStatus.OK);
 	}
 	
 	
 	@RequestMapping(value = { "/news/{id}", "/vest/{id}" }, method = RequestMethod.GET)
 	public ResponseEntity<News> get(@PathVariable(value = "id") Integer id) {
-		return new TemplateResponseEntity(newsRepository.findById(id), HttpStatus.OK);
+		return new ResponseEntity(newsRepository.findById(id), HttpStatus.OK);
 	}
 	// 
 	@Transactional
@@ -55,7 +55,7 @@ public class NewsController {
 		  .transferTo(Paths.get(System.getProperty("user.dir")+"/src/main/resources/static/"+savednews.getNewsID()));		
 		  
 		
-		return new TemplateResponseEntity(savednews, HttpStatus.OK);
+		return new ResponseEntity(savednews, HttpStatus.OK);
 	}
 	// ova opcija je samo formalna, ne slaze sa logikom aplikacije
 	@Transactional
@@ -68,7 +68,7 @@ public class NewsController {
 		  .transferTo(Paths.get(System.getProperty("user.dir")+"/src/main/resources/static/"+savednews.getNewsID()));		
 		  
 		
-		return new TemplateResponseEntity(savednews, HttpStatus.OK);
+		return new ResponseEntity(savednews, HttpStatus.OK);
 	}
 	
 	// samo admin moze da brise komentare
@@ -82,9 +82,9 @@ public class NewsController {
 			File img = new File(System.getProperty("user.dir")+"/src/main/resources/static/"+id);
 			img.delete();
 		} catch (Exception e) {
-			return new TemplateResponseEntity(e.getMessage(), HttpStatus.NOT_FOUND);
+			return new ResponseEntity(e.getMessage(), HttpStatus.NOT_FOUND);
 		}
-		return new TemplateResponseEntity("sve je u redu", HttpStatus.OK);
+		return new ResponseEntity("sve je u redu", HttpStatus.OK);
 	}
 	@Transactional
 	@RequestMapping(value = { "/news-approved", "/vest-odobrena" }, method = RequestMethod.POST)
@@ -101,5 +101,7 @@ public class NewsController {
 		}
 
 	}
+	
+	
 
 }

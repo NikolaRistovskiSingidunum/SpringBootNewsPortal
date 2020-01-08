@@ -47,6 +47,9 @@ public class SecurityJavaConfig extends WebSecurityConfigurerAdapter {
         //.antMatchers("/").permitAll()
         .and().formLogin()
         .and().csrf().disable();
+        
+        
+        //.anyRequest().access("hasIpAddress('127.0.0.1')");
           //...
    }
 	
