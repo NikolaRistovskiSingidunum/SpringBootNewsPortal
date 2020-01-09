@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.access.prepost.PostAuthorize;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -31,6 +32,12 @@ public class CommentController {
 
 	//svi mogu da gledaju odobrene komentare
 	
+
+
+	
+	
+	//@Secured({"ROLE_SOMEBODY"})
+	//@PreAuthorize("hasIpAddress('123.0.0.1')")
 	@RequestMapping(value = { "/comment", "/komentar" }, method = RequestMethod.GET)
 	public ResponseEntity<Iterable<Comment>> getAll() {
 
@@ -38,6 +45,8 @@ public class CommentController {
 	}
 
 	//svi mogu da gledaju odobrene komentare
+	//@Secured({"ROLE_ADMIN"})
+	//@PreAuthorize("hasIpAddress('137.0.0.2')")
 	@RequestMapping(value = { "/comment/{id}", "/komentar/{id}" }, method = RequestMethod.GET)
 	public ResponseEntity<Comment> get(@PathVariable(value = "id") Integer id) {
 		return new ResponseEntity(commentRepository.findById(id), HttpStatus.OK);

@@ -40,6 +40,10 @@ public class SecurityJavaConfig extends WebSecurityConfigurerAdapter {
     protected void configure(final HttpSecurity http) throws Exception {
         http.authorizeRequests()
         .antMatchers("/admin/find/*").hasRole("ADMIN")
+        .and().anonymous().authorities("ROLE_SOMEBODY")
+        //.and().authorizeRequests().antMatchers("/comment").hasIpAddress("127.0.0.1")
+//        .and().authorizeRequests().antMatchers("/comment").hasRole("SOMEBODY")
+//       
 //        .antMatchers(HttpMethod.POST, "/comment").hasRole("ADMIN")
 //        
 //        
@@ -47,10 +51,22 @@ public class SecurityJavaConfig extends WebSecurityConfigurerAdapter {
         //.antMatchers("/").permitAll()
         .and().formLogin()
         .and().csrf().disable();
-        
+       
+//        http.anonymous().and().authorizeRequests()
+//        .antMatchers("/comment").hasIpAddress("127.0.0.1");
+
+        //http.anonymous().
         
         //.anyRequest().access("hasIpAddress('127.0.0.1')");
           //...
+        
+//        http
+//        .authorizeRequests()
+//            .anyRequest().hasIpAddress("0.0.0.0/0");
+        
+        http
+        .authorizeRequests()
+            .anyRequest().hasIpAddress("127.0.0.1");
    }
 	
 	@Bean

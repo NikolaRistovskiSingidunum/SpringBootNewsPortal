@@ -13,7 +13,7 @@ public class Comment {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer commentID;
+	private Integer commentID; 
 
 	@Column(insertable = false, updatable = false, columnDefinition = "DATETIME on update CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP", nullable = false)
 	private LocalDateTime date;
