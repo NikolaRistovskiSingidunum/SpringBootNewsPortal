@@ -1,0 +1,337 @@
+{
+	"id": "ebd49eb9-82c0-ccb1-1dd8-94885e348570",
+	"name": "approved comments",
+	"description": "",
+	"order": [
+		"d055ca80-d870-dea7-f53a-73697a662d61",
+		"ecb76a5d-6c7b-0503-bc33-75b0179af7c0",
+		"93674be6-1744-db07-e875-8790c2ed1c5d",
+		"b3e5eaa2-fd1c-46b1-312b-cf63d6f080a0",
+		"baf944a6-0211-252f-5b7f-320ab1e11de6",
+		"fe938025-1b5f-188f-3a80-d33964ced21e"
+	],
+	"folders": [],
+	"folders_order": [],
+	"timestamp": 1578421610423,
+	"owner": "3064713",
+	"public": false,
+	"requests": [
+		{
+			"id": "93674be6-1744-db07-e875-8790c2ed1c5d",
+			"headers": "",
+			"headerData": [],
+			"url": "localhost:9090/comment/90",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "DELETE",
+			"data": [
+				{
+					"key": "text",
+					"value": "Време очаја време наде, једни руше а други драге. Америка није рад и зној, постоје Холивуд. бејебол и рокенрол. ",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "author",
+					"value": "Краставац ",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "adminID",
+					"value": "9",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "newsCategory",
+					"value": "DRUSTVO",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "title",
+					"value": "Време спорта и разоноде",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "description",
+					"value": "Nesto nije u radu sa cirilisom u data bazi, ili je moza upitanje defualt encoding\n",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "img",
+					"value": "",
+					"description": "",
+					"type": "file",
+					"enabled": true
+				},
+				{
+					"key": "newsID",
+					"value": "27",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1578529301191,
+			"name": "obrisi komentar",
+			"description": "dodoj vest - servis 9092",
+			"collectionId": "ebd49eb9-82c0-ccb1-1dd8-94885e348570",
+			"responses": []
+		},
+		{
+			"id": "b3e5eaa2-fd1c-46b1-312b-cf63d6f080a0",
+			"headers": "",
+			"headerData": [],
+			"url": "127.0.0.1:9090/comment",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1578529302144,
+			"name": "vidi sve komentare",
+			"description": "",
+			"collectionId": "ebd49eb9-82c0-ccb1-1dd8-94885e348570",
+			"responses": []
+		},
+		{
+			"id": "baf944a6-0211-252f-5b7f-320ab1e11de6",
+			"headers": "",
+			"headerData": [],
+			"url": "localhost:9090/comment/news/28",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1578529317047,
+			"name": "vidi sve komentare za datu vest",
+			"description": "",
+			"collectionId": "ebd49eb9-82c0-ccb1-1dd8-94885e348570",
+			"responses": []
+		},
+		{
+			"id": "d055ca80-d870-dea7-f53a-73697a662d61",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/x-www-form-urlencoded",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "127.0.0.1:9090/comment",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "text",
+					"value": "Trebalo da radi i latinična ćirilica. ",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "author",
+					"value": "Pihtija ",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "adminID",
+					"value": "9",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "newsCategory",
+					"value": "DRUSTVO",
+					"description": "",
+					"type": "text",
+					"enabled": false
+				},
+				{
+					"key": "title",
+					"value": "Vreme sporta i razonode",
+					"description": "",
+					"type": "text",
+					"enabled": false
+				},
+				{
+					"key": "description",
+					"value": "Dule Savic volejom u mrežu od stative",
+					"description": "",
+					"type": "text",
+					"enabled": false
+				},
+				{
+					"key": "img",
+					"value": "",
+					"description": "",
+					"type": "file",
+					"enabled": false
+				},
+				{
+					"key": "newsID",
+					"value": "2",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1578529298720,
+			"name": "dodaj komentar",
+			"description": "dodoj vest - servis 9092",
+			"collectionId": "ebd49eb9-82c0-ccb1-1dd8-94885e348570",
+			"responses": []
+		},
+		{
+			"id": "ecb76a5d-6c7b-0503-bc33-75b0179af7c0",
+			"headers": "",
+			"headerData": [],
+			"url": "localhost:9090/comment",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "PUT",
+			"data": [
+				{
+					"key": "text",
+					"value": "Време очаја време наде, једни руше а други драге. Америка није рад и зној, постоје Холивуд. бејебол и рокенрол. ",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "author",
+					"value": "Plastika",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "adminID",
+					"value": "9",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "newsCategory",
+					"value": "DRUSTVO",
+					"description": "",
+					"type": "text",
+					"enabled": false
+				},
+				{
+					"key": "title",
+					"value": "Време спорта и разоноде",
+					"description": "",
+					"type": "text",
+					"enabled": false
+				},
+				{
+					"key": "description",
+					"value": "Nesto nije u radu sa cirilisom u data bazi, ili je moza upitanje defualt encoding\n",
+					"description": "",
+					"type": "text",
+					"enabled": false
+				},
+				{
+					"key": "img",
+					"value": "",
+					"description": "",
+					"type": "file",
+					"enabled": false
+				},
+				{
+					"key": "newsID",
+					"value": "27",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "commentID",
+					"value": "90",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1578529300022,
+			"name": "update komentar",
+			"description": "dodoj vest - servis 9092",
+			"collectionId": "ebd49eb9-82c0-ccb1-1dd8-94885e348570",
+			"responses": []
+		},
+		{
+			"id": "fe938025-1b5f-188f-3a80-d33964ced21e",
+			"headers": "",
+			"headerData": [],
+			"url": "localhost:9090/comment/90",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1578529304387,
+			"name": "vidi jedan komentar",
+			"description": "",
+			"collectionId": "ebd49eb9-82c0-ccb1-1dd8-94885e348570",
+			"responses": []
+		}
+	]
+}
