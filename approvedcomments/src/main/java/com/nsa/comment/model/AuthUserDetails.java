@@ -1,4 +1,4 @@
-package com.nsa.approvedcomment.model;
+package com.nsa.comment.model;
 
 import java.io.Serializable;
 import java.util.Arrays;
@@ -21,7 +21,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import com.nsa.approvedcomment.repo.AuthUserDetailsRepository;
+import com.nsa.comment.repo.AuthUserDetailsRepository;
 
 
 public class AuthUserDetails implements UserDetails {
@@ -32,6 +32,8 @@ public class AuthUserDetails implements UserDetails {
 	private String password;
 	
 	private String role;
+	
+	private Integer adminID;
 	
 	public AuthUserDetails(String username) {
 		super();
@@ -44,6 +46,7 @@ public class AuthUserDetails implements UserDetails {
 		this.username=adminDetails.getUsername();
 		this.password = adminDetails.getPassword();
 		this.role = adminDetails.getRole();
+		this.adminID = adminDetails.getId();
 	}
 	
 	public void setUsername(String username) {
@@ -91,6 +94,11 @@ public class AuthUserDetails implements UserDetails {
 	public boolean isEnabled() {
 		// TODO Auto-generated method stub
 		return true;
+	}
+
+
+	public Integer getAdminID() {
+		return adminID;
 	}
 
 	

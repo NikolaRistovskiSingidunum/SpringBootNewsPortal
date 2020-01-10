@@ -1,4 +1,4 @@
-package com.nsa.approvedcomment.security;
+package com.nsa.comment.security;
 
 import javax.sql.DataSource;
 
@@ -63,10 +63,10 @@ public class SecurityJavaConfig extends WebSecurityConfigurerAdapter {
 //        http
 //        .authorizeRequests()
 //            .anyRequest().hasIpAddress("0.0.0.0/0");
-        
-        http
-        .authorizeRequests()
-            .anyRequest().hasIpAddress("127.0.0.1");
+//        
+//        http
+//        .authorizeRequests()
+//            .anyRequest().hasIpAddress("127.0.0.1");
    }
 	
 	@Bean

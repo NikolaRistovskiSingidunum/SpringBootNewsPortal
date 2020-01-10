@@ -1,4 +1,4 @@
-package com.nsa.approvedcomment.controllers;
+package com.nsa.comment.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.nsa.approvedcomment.model.AdminDetails;
-import com.nsa.approvedcomment.repo.AuthUserDetailsRepository;
+import com.nsa.comment.model.AdminDetails;
+import com.nsa.comment.repo.AuthUserDetailsRepository;
 
 
 @RestController

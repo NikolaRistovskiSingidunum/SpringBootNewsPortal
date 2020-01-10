@@ -1,4 +1,4 @@
-package com.nsa.approvedcomment.model;
+package com.nsa.comment.model;
 
 import java.time.LocalDateTime;
 
@@ -7,6 +7,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+import com.nsa.comment.utils.CommentState;
+
+
+
 
 @Entity
 public class Comment {
@@ -30,27 +35,24 @@ public class Comment {
 	@Column(nullable = false, updatable = true, insertable = true, length = 50)
 	private String author;
 	/* Getter and setters */
+	@Column(nullable = false, updatable = true, insertable = true)
+	private CommentState commentState = CommentState.PENDING;
 
 	protected Comment() {
 	}
 
-	public Comment(String text, Integer newsID, Integer adminID, String author) {
+
+	public Comment(LocalDateTime date, String text, Integer newsID, Integer adminID, String author,
+			CommentState commentState) {
 		super();
+		this.date = date;
 		this.text = text;
 		this.newsID = newsID;
 		this.adminID = adminID;
 		this.author = author;
-
-		
+		this.commentState = commentState;
 	}
 
-	public Comment(Integer commentID, String text, Integer newsID, Integer adminID) {
-		super();
-		this.commentID = commentID;
-		this.text = text;
-		this.newsID = newsID;
-		this.adminID = adminID;
-	}
 
 	public Integer getCommentID() {
 		return commentID;
@@ -100,6 +102,16 @@ public class Comment {
 
 	public void setAuthor(String author) {
 		this.author = author;
+	}
+
+
+	public CommentState getCommentState() {
+		return commentState;
+	}
+
+
+	public void setCommentState(CommentState commentState) {
+		this.commentState = commentState;
 	};
 
 	

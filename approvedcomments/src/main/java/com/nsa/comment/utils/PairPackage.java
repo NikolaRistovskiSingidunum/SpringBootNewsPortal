@@ -1,4 +1,4 @@
-package com.nsa.approvednews;
+package com.nsa.comment.utils;
 
 public class PairPackage <K,V> {
 	

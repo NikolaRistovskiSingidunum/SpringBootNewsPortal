@@ -1,4 +1,4 @@
-package com.nsa.approvedcomment.security;
+package com.nsa.comment.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -6,9 +6,9 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.nsa.approvedcomment.model.AdminDetails;
-import com.nsa.approvedcomment.model.AuthUserDetails;
-import com.nsa.approvedcomment.repo.AuthUserDetailsRepository;
+import com.nsa.comment.model.AdminDetails;
+import com.nsa.comment.model.AuthUserDetails;
+import com.nsa.comment.repo.AuthUserDetailsRepository;
 
 @Service
 public class AuthService implements UserDetailsService {

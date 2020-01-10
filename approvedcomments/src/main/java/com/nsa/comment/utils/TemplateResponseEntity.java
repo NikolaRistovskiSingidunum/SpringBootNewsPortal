@@ -1,10 +1,15 @@
-package com.nsa.approvedcomment;
+package com.nsa.comment.utils;
+
+import java.io.Serializable;
+import java.lang.reflect.Field;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.MultiValueMap;
 
-public class TemplateResponseEntity<T> extends ResponseEntity<T> {
+
+
+public class TemplateResponseEntity<T> extends ResponseEntity<T> implements Serializable {
 
 	public TemplateResponseEntity() {
 		super(HttpStatus.OK);
@@ -33,6 +38,20 @@ public class TemplateResponseEntity<T> extends ResponseEntity<T> {
 
 
 	
+	public void setStatus(HttpStatus status)
+			throws NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException {
+		Field field = ResponseEntity.class.getDeclaredField("satus");
+		field.setAccessible(true);
+		field.set(this, status);
+		System.out.println("status se printa");
+	}
 	
+	public void setBody(T body)
+			throws NoSuchFieldException, SecurityException, IllegalArgumentException, IllegalAccessException {
+		Field field = ResponseEntity.class.getDeclaredField("body");
+		field.setAccessible(true);
+		field.set(this, body);
+		System.out.println("body se printa");
+	}
 
 }

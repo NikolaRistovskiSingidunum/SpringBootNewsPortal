@@ -1,10 +1,12 @@
 package com.nsa.pendingapprovalnews;
 
+import java.io.Serializable;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.MultiValueMap;
 
-public class TemplateResponseEntity<T> extends ResponseEntity<T> {
+public class TemplateResponseEntity<T> extends ResponseEntity<T> implements Serializable {
 
 	public TemplateResponseEntity() {
 		super(HttpStatus.OK);

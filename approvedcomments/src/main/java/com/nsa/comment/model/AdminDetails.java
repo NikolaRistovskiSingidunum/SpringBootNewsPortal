@@ -1,4 +1,4 @@
-package com.nsa.approvedcomment.model;
+package com.nsa.comment.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

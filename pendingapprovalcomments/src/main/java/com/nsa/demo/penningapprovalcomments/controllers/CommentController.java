@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.Authentication;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -22,6 +23,7 @@ import com.nsa.demo.penningapprovalcomments.repo.CommentRepository;
 
 @RestController
 @EnableWebSecurity
+@CrossOrigin
 public class CommentController {
 
 	@Autowired
@@ -115,20 +117,20 @@ public class CommentController {
 		}
 
 	}
-//	
-//	@RequestMapping(value = { "/test/{id}", "/a/{id}" }, method = RequestMethod.GET)
-//	public ResponseEntity<Comment> rere(@PathVariable(value = "id") Integer id) {
-//
-//		RestTemplate template = new RestTemplate();
-//		Comment comment = commentRepository.findById(id).get();
-//		comment.setAdminID(3);
-//		
-//		TemplateResponseEntity<Comment> resposne = 
-//				template.postForObject("http://localhost:9090/comment", comment, TemplateResponseEntity.class);
-//		
-//		
-//		return new TemplateResponseEntity(comment, HttpStatus.OK);
-//	}
+	
+	@RequestMapping(value = { "/test/{id}", "/a/{id}" }, method = RequestMethod.GET)
+	public ResponseEntity<Comment> rere(@PathVariable(value = "id") Integer id) {
+
+		RestTemplate template = new RestTemplate();
+		Comment comment = commentRepository.findById(id).get();
+		comment.setAdminID(3);
+		
+		TemplateResponseEntity<Comment> resposne = 
+				template.postForObject("http://localhost:9090/comment", comment, TemplateResponseEntity.class);
+		
+		
+		return new TemplateResponseEntity(comment, HttpStatus.OK);
+	}
 	
 
 
