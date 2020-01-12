@@ -16,4 +16,6 @@ public interface CommentRepository extends JpaRepository<Comment, Integer> {
 
 	
 	Iterable<Comment> findByNewsIDAndCommentState(Integer newsID, CommentState commentState);
+	
+	Comment findByCommentIDAndCommentState(Integer commentID, CommentState commentState );
 }

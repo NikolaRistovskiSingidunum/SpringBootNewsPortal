@@ -34,30 +34,29 @@ public class CommentController {
 	CommentRepository commentRepository;
 
 	// svi mogu da gledaju odobrene komentare
-
-	// @Secured({"ROLE_SOMEBODY"})
-	// @PreAuthorize("hasIpAddress('123.0.0.1')")
 	@RequestMapping(value = { "/comment", "/komentar" }, method = RequestMethod.GET)
 	public ResponseEntity<Iterable<Comment>> getAllApproved() {
 
 		return new ResponseEntity(commentRepository.findByCommentState(CommentState.APPROVED), HttpStatus.OK);
 	}
 
+	//admin moze da pregleda komentare na cekanju
 	@Secured({ "ROLE_ADMIN" })
-	@RequestMapping(value = { "/admin/comment-pending", "/komentar-nacekanju" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "/admin/comment-pending", "admin/komentar-nacekanju" }, method = RequestMethod.GET)
 	public ResponseEntity<Iterable<Comment>> getAllPending() {
 
 		return new ResponseEntity(commentRepository.findByCommentState(CommentState.PENDING), HttpStatus.OK);
 	}
 
+	
 	@Secured({ "ROLE_ADMIN" })
 	@RequestMapping(value = { "/admin/comment-all", "/admin/komentar-svi" }, method = RequestMethod.GET)
 	public ResponseEntity<Iterable<Comment>> getAllComment() {
 
-		return new ResponseEntity(commentRepository.findByCommentState(CommentState.PENDING), HttpStatus.OK);
+		return new ResponseEntity(commentRepository.findAll(), HttpStatus.OK);
 	}
 
-	// svi mogu da gledaju odobrene komentare
+	//admin moze da pregleda svaki komentar
 	@Secured({ "ROLE_ADMIN" })
 	@RequestMapping(value = { "/admin/comment/{id}", "/admin/komentar/{id}" }, method = RequestMethod.GET)
 	public ResponseEntity<Comment> get(Authentication authentication, @PathVariable(value = "id") Integer id) {
@@ -65,19 +64,27 @@ public class CommentController {
 		return new ResponseEntity(commentRepository.findById(id), HttpStatus.OK);
 	}
 
+	//korisnik moze da dobije kometar koji je odobren, tj. ne moze da dobije komentar koji je u obradi
 	@RequestMapping(value = { "/comment/{id}", "/komentar/{id}" }, method = RequestMethod.GET)
 	public ResponseEntity<Comment> get(@PathVariable(value = "id") Integer id) {
+		
+		Comment comment = commentRepository.findByCommentIDAndCommentState(id, CommentState.APPROVED);
+		
+		if(comment !=null)
+			 return new ResponseEntity(comment, HttpStatus.OK);
+		
+		return new ResponseEntity(comment, HttpStatus.FORBIDDEN);
 
-		try {
-			Comment comment = commentRepository.findById(id).get();
-
-			if (comment != null && comment.getCommentState() != CommentState.PENDING)
-				return new ResponseEntity(comment, HttpStatus.OK);
-
-			return new ResponseEntity(null, HttpStatus.FORBIDDEN);
-		} catch (Exception e) {
-			return new ResponseEntity(null, HttpStatus.GONE);
-		}
+//		try {
+//			Comment comment = commentRepository.findById(id).get();
+//
+//			if (comment != null && comment.getCommentState() != CommentState.PENDING)
+//				return new ResponseEntity(comment, HttpStatus.OK);
+//
+//			return new ResponseEntity(null, HttpStatus.FORBIDDEN);
+//		} catch (Exception e) {
+//			return new ResponseEntity(null, HttpStatus.GONE);
+//		}
 	}
 
 	// svi mogu da postavljaju komentare
@@ -88,6 +95,7 @@ public class CommentController {
 		return new TemplateResponseEntity(commentRepository.save(comment), HttpStatus.OK);
 	}
 
+	//samo admin moze da menja komentar
 	@RequestMapping(value = { "/admin/comment", "/admin/komentar" }, method = RequestMethod.PUT)
 	@Secured({ "ROLE_ADMIN" })
 	public ResponseEntity<Comment> update(Authentication authentication, Comment comment) {
