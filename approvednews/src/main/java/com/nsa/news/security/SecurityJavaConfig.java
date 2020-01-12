@@ -1,4 +1,4 @@
-package com.nsa.approvednews.security;
+package com.nsa.news.security;
 
 import javax.sql.DataSource;
 

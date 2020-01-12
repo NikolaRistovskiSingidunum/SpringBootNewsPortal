@@ -1,4 +1,4 @@
-package com.nsa.approvednews.model;
+package com.nsa.news.model;
 
 import java.io.Serializable;
 import java.util.Arrays;
@@ -21,7 +21,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import com.nsa.approvednews.repo.AuthUserDetailsRepository;
+import com.nsa.news.repo.AuthUserDetailsRepository;
 
 
 public class AuthUserDetails implements UserDetails {

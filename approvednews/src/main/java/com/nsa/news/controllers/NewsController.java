@@ -1,4 +1,4 @@
-package com.nsa.approvednews.controllers;
+package com.nsa.news.controllers;
 
 import java.io.File;
 import java.io.IOException;
@@ -18,10 +18,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.nsa.approvednews.PairPackage;
-import com.nsa.approvednews.TemplateResponseEntity;
-import com.nsa.approvednews.model.News;
-import com.nsa.approvednews.repo.NewsRepository;
+import com.nsa.news.PairPackage;
+import com.nsa.news.TemplateResponseEntity;
+import com.nsa.news.model.News;
+import com.nsa.news.repo.NewsRepository;
 
 import javafx.util.Pair;
 

@@ -1,10 +1,9 @@
-package com.nsa.approvednews.repo;
+package com.nsa.news.repo;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.CrudRepository;
 
-
-import com.nsa.approvednews.model.News;
+import com.nsa.news.model.News;
 
 public interface NewsRepository extends JpaRepository<News, Integer> {
 	

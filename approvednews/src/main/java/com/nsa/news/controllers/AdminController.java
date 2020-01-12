@@ -1,4 +1,4 @@
-package com.nsa.approvednews.controllers;
+package com.nsa.news.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.nsa.approvednews.model.AdminDetails;
-import com.nsa.approvednews.repo.AuthUserDetailsRepository;
+import com.nsa.news.model.AdminDetails;
+import com.nsa.news.repo.AuthUserDetailsRepository;
 
 
 @RestController

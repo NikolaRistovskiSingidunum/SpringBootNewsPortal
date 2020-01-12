@@ -1,4 +1,4 @@
-package com.nsa.approvednews.model;
+package com.nsa.news.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

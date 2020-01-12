@@ -1,4 +1,4 @@
-package com.nsa.approvednews;
+package com.nsa.news;
 
 import java.io.Serializable;
 

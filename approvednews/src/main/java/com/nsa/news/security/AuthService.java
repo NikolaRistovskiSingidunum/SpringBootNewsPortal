@@ -1,4 +1,4 @@
-package com.nsa.approvednews.security;
+package com.nsa.news.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -6,9 +6,9 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.nsa.approvednews.model.AdminDetails;
-import com.nsa.approvednews.model.AuthUserDetails;
-import com.nsa.approvednews.repo.AuthUserDetailsRepository;
+import com.nsa.news.model.AdminDetails;
+import com.nsa.news.model.AuthUserDetails;
+import com.nsa.news.repo.AuthUserDetailsRepository;
 
 @Service
 public class AuthService implements UserDetailsService {
