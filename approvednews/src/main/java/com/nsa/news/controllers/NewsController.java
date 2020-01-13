@@ -42,6 +42,7 @@ public class NewsController {
 
 		return new ResponseEntity(newsRepository.findByNewsState(NewsState.APPROVED), HttpStatus.OK);
 	}
+	
 	@Secured({"ROLE_ADMIN","ROLE_SUPER"})
 	@RequestMapping(value = { "/admin/news-pending", "/admin/vest-nacekanju" }, method = RequestMethod.GET)
 	public ResponseEntity<Iterable<News>> getAllNewsPendingApprovement() {
@@ -55,7 +56,7 @@ public class NewsController {
 
 		return new ResponseEntity(newsRepository.findAll(), HttpStatus.OK);
 	}
-	//svako moze da vidi odobrene vest
+	//svako moze da vidi odobrenu vest
 	@RequestMapping(value = { "/news/{id}", "/vest/{id}" }, method = RequestMethod.GET)
 	public ResponseEntity<News> get(@PathVariable(value = "id") Integer id) {
 		return new ResponseEntity(newsRepository.findByNewsIDAndNewsState(id, NewsState.APPROVED), HttpStatus.OK);

@@ -10,6 +10,7 @@ import org.springframework.security.access.prepost.PostAuthorize;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.Authentication;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -88,11 +89,12 @@ public class CommentController {
 	}
 
 	// svi mogu da postavljaju komentare
+	@Transactional
 	@RequestMapping(value = { "/comment", "/komentar" }, method = RequestMethod.POST)
 	public ResponseEntity<Comment> add(Comment comment) {
 
 		comment.setCommentState(CommentState.PENDING);
-		return new TemplateResponseEntity(commentRepository.save(comment), HttpStatus.OK);
+		return new ResponseEntity(commentRepository.save(comment), HttpStatus.OK);
 	}
 
 	//samo admin moze da menja komentar
@@ -106,6 +108,7 @@ public class CommentController {
 		return new ResponseEntity(commentRepository.save(comment), HttpStatus.OK);
 	}
 
+	@Transactional
 	@Secured({ "ROLE_ADMIN" })
 	@RequestMapping(value = { "/admin/comment/{id}", "/admin/komentar/{id}" }, method = RequestMethod.DELETE)
 	public ResponseEntity<String> delete(@PathVariable(value = "id") Integer id) {
@@ -113,9 +116,9 @@ public class CommentController {
 		try {
 			commentRepository.deleteById(id);
 		} catch (Exception e) {
-			return new TemplateResponseEntity(e.getMessage(), HttpStatus.NOT_FOUND);
+			return new ResponseEntity(e.getMessage(), HttpStatus.NOT_FOUND);
 		}
-		return new TemplateResponseEntity("sve je u redu", HttpStatus.OK);
+		return new ResponseEntity("sve je u redu", HttpStatus.OK);
 	}
 
 	// svi mogu da vide komentare za datu vest
@@ -133,6 +136,7 @@ public class CommentController {
 		return new ResponseEntity(commentRepository.findByNewsID(newsID), HttpStatus.OK);
 	}
 
+	@Transactional
 	@Secured({ "ROLE_ADMIN" })
 	@RequestMapping(value = { "/admin/comment-approve/{id}",
 			"/admin/komentar-odobri/{id}" }, method = RequestMethod.GET)
