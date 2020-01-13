@@ -143,27 +143,26 @@ public class NewsController {
 //		}
 //
 //	}
-	
-	@Secured({"ROLE_SUPER"})
+
+	@Secured({ "ROLE_SUPER" })
 	@Transactional
 	@RequestMapping(value = { "/admin/approve-news/{id}", "/admin/odobri-vest/{id}" }, method = RequestMethod.GET)
-	public ResponseEntity<News> approveNews(Authentication authentication,@PathVariable(value = "id") Integer id) {
-		
+	public ResponseEntity<News> approveNews(Authentication authentication, @PathVariable(value = "id") Integer id) {
+
 		News news = newsRepository.findById(id).get();
-		
-		if(news!=null)
-		{
-		
+
+		//ukoliko vest ne postoji ili je vec odobrene
+		if (news == null || news.getNewsState() == NewsState.APPROVED)
+			return new ResponseEntity(news, HttpStatus.GONE);
+
 		AuthUserDetails userDetails = (AuthUserDetails) (authentication.getPrincipal());
 		Integer adminID = userDetails.getAdminID();
 		news.setAdminID(adminID);
 		news.setNewsState(NewsState.APPROVED);
-		
+
 		News savednews = newsRepository.save(news);
 		return new ResponseEntity(savednews, HttpStatus.OK);
-		}
-		
-		return new ResponseEntity(null, HttpStatus.GONE);
+
 	}
 	
 
