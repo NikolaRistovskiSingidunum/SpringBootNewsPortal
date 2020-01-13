@@ -39,7 +39,7 @@ public class News {
 	private String text;
 
 	//admin koji je odobrio vest
-	@Column(nullable = false, updatable = true, insertable = true)
+	@Column(nullable = true, updatable = true, insertable = true)
 	private Integer adminID;
 	
 	@Column(nullable = true, updatable=true, insertable = true)

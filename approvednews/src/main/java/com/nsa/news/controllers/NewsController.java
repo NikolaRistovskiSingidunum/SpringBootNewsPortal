@@ -76,13 +76,13 @@ public class NewsController {
 	public ResponseEntity<News> add(Authentication authentication,News news) throws IllegalStateException, IOException {
 
 		
-		//author koji je poslao vest
+		//autor koji je poslao vest
 		AuthUserDetails userDetails = (AuthUserDetails) (authentication.getPrincipal());
 		Integer adminID = userDetails.getAdminID();
 		news.setAuthor(adminID);
 		
 		
-		//admin salje vesti koji jos nisu odobrene
+		//autor salje vesti koji jos nisu odobrene
 		news.setNewsState(NewsState.PENDING);
 		News savednews = newsRepository.save(news);
 		news.getImg().transferTo(
