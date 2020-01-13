@@ -32,25 +32,25 @@ import javafx.util.Pair;
 public class CommercialController {
 
 	@Autowired
-	CommercialRepository commercialsRepository;
+	CommercialRepository commercialRepository;
 
 	// svi mogu da vide sve reklame
-	@RequestMapping(value = { "/commercials", "/reklama" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "/commercial", "/reklama" }, method = RequestMethod.GET)
 	public ResponseEntity<Iterable<Commercial>> getAll() {
 
-		return new ResponseEntity(commercialsRepository.findAll(), HttpStatus.OK);
+		return new ResponseEntity(commercialRepository.findAll(), HttpStatus.OK);
 	}
 
 	// svako moze da vidi reklamu
-	@RequestMapping(value = { "/commercials/{id}", "/reklama/{id}" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "/commercial/{id}", "/reklama/{id}" }, method = RequestMethod.GET)
 	public ResponseEntity<Commercial> get(@PathVariable(value = "id") Integer id) {
-		return new ResponseEntity(commercialsRepository.findById(id), HttpStatus.OK);
+		return new ResponseEntity(commercialRepository.findById(id), HttpStatus.OK);
 	}
 
 	// samo admin moze da dodaje reklame
 	@Secured({ "ROLE_ADMIN" })
 	@Transactional
-	@RequestMapping(value = { "/admin/news", "/admin/vest" }, method = RequestMethod.POST)
+	@RequestMapping(value = { "/commercial", "/reklama" }, method = RequestMethod.POST)
 	public ResponseEntity<Commercial> add(Authentication authentication, Commercial commercial)
 			throws IllegalStateException, IOException {
 
@@ -59,7 +59,7 @@ public class CommercialController {
 		Integer adminID = userDetails.getAdminID();
 		commercial.setAdminID(adminID);
 
-		Commercial savedcommercial = commercialsRepository.save(commercial);
+		Commercial savedcommercial = commercialRepository.save(commercial);
 		commercial.getImg().transferTo(Paths.get(
 				System.getProperty("user.dir") + "/src/main/resources/static/" + savedcommercial.getCommercialID()));
 
@@ -69,7 +69,7 @@ public class CommercialController {
 	// samo admin moze da menja reklamu
 	@Secured({ "ROLE_ADMIN" })
 	@Transactional
-	@RequestMapping(value = { "/admin/news", "/admin/vest" }, method = RequestMethod.PUT)
+	@RequestMapping(value = { "/commercial", "/reklama" }, method = RequestMethod.PUT)
 	public ResponseEntity<Commercial> update(Authentication authentication, Commercial commercial)
 			throws IllegalStateException, IOException {
 
@@ -79,7 +79,7 @@ public class CommercialController {
 		commercial.setAdminID(adminID);
 
 		// promenjenje vest imaju status neodobrene
-		Commercial savedcommercial = commercialsRepository.save(commercial);
+		Commercial savedcommercial = commercialRepository.save(commercial);
 		commercial.getImg().transferTo(Paths.get(
 				System.getProperty("user.dir") + "/src/main/resources/static/" + savedcommercial.getCommercialID()));
 
@@ -89,11 +89,11 @@ public class CommercialController {
 	// samo admin moze da menja reklamu
 	@Secured({ "ROLE_ADMIN" })
 	@Transactional
-	@RequestMapping(value = { "/admin/news/{id}", "/admin/vest/{id}" }, method = RequestMethod.DELETE)
+	@RequestMapping(value = { "/commercial/{id}", "/reklama/{id}" }, method = RequestMethod.DELETE)
 	public ResponseEntity<String> delete(@PathVariable(value = "id") Integer id) {
 
 		try {
-			commercialsRepository.deleteById(id);
+			commercialRepository.deleteById(id);
 			File img = new File(System.getProperty("user.dir") + "/src/main/resources/static/" + id);
 			img.delete();
 		} catch (Exception e) {
