@@ -8,10 +8,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import org.springframework.data.annotation.Transient;
+//import org.springframework.data.annotation.Transient;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.nsa.news.utils.NewsState;
 
 
 
@@ -37,10 +38,11 @@ public class News {
 	@Column(nullable = false, updatable = true, insertable = true, length = 20000)
 	private String text;
 
+	//admin koji je odobrio vest
 	@Column(nullable = false, updatable = true, insertable = true)
 	private Integer adminID;
 	
-	@Column(nullable = false, updatable=true, insertable = true)
+	@Column(nullable = true, updatable=true, insertable = true)
 	private NewsCategory newsCategory;
 	
 	@Column(nullable = false, updatable = true, insertable = true, length = 50)
@@ -49,8 +51,13 @@ public class News {
 	@Column(nullable = false, updatable = true, insertable = true, length = 300)
 	private String description; 
 	
+	//autor koje je poslao vest
 	@Column(nullable = false, updatable = true, insertable = true, length = 50)
-	private String author; 
+	private Integer author; 
+	
+	@Column(nullable = false, updatable = true, insertable = true)
+	private NewsState newsState; 
+
 
 	@javax.persistence.Transient
 	@JsonIgnore
@@ -61,7 +68,7 @@ public class News {
 	
 	public News(LocalDateTime date, String text, Integer adminID,
 			NewsCategory newsCategory, String title, 
-			String description, String author) {
+			String description, Integer author, NewsState newsState) {
 		super();
 		this.date = date;
 		this.text = text;
@@ -70,6 +77,7 @@ public class News {
 		this.title = title;
 		this.description = description;
 		this.author = author;
+		this.newsState = newsState;
 		
 	}
 
@@ -137,16 +145,6 @@ public class News {
 	}
 
 
-	public String getAuthor() {
-		return author;
-	}
-
-
-	public void setAuthor(String author) {
-		this.author = author;
-	}
-
-
 	public MultipartFile getImg() {
 		return img;  
 	}
@@ -154,6 +152,26 @@ public class News {
 
 	public void setImg(MultipartFile img) {
 		this.img = img;
+	}
+
+
+	public Integer getAuthor() {
+		return author;
+	}
+
+
+	public void setAuthor(Integer author) {
+		this.author = author;
+	}
+
+
+	public NewsState getNewsState() {
+		return newsState;
+	}
+
+
+	public void setNewsState(NewsState newsState) {
+		this.newsState = newsState;
 	};
 	
 	

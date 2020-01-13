@@ -33,6 +33,8 @@ public class AuthUserDetails implements UserDetails {
 	
 	private String role;
 	
+	private Integer adminID;
+	
 	public AuthUserDetails(String username) {
 		super();
 		this.username = username;
@@ -44,6 +46,7 @@ public class AuthUserDetails implements UserDetails {
 		this.username=adminDetails.getUsername();
 		this.password = adminDetails.getPassword();
 		this.role = adminDetails.getRole();
+		this.adminID = adminDetails.getId();
 	}
 	
 	public void setUsername(String username) {
@@ -91,6 +94,11 @@ public class AuthUserDetails implements UserDetails {
 	public boolean isEnabled() {
 		// TODO Auto-generated method stub
 		return true;
+	}
+
+
+	public Integer getAdminID() {
+		return adminID;
 	}
 
 	
