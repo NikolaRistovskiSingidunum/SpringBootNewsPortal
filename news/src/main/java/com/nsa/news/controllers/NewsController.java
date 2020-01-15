@@ -21,11 +21,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.nsa.news.model.AuthUserDetails;
-import com.nsa.news.PairPackage;
-import com.nsa.news.TemplateResponseEntity;
 import com.nsa.news.model.News;
 import com.nsa.news.repo.NewsRepository;
 import com.nsa.news.utils.NewsState;
+import com.nsa.news.utils.PairPackage;
+
 
 import javafx.util.Pair;
 

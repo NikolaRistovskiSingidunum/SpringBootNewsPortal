@@ -24,7 +24,7 @@ import com.nsa.comment.model.AuthUserDetails;
 import com.nsa.comment.model.Comment;
 import com.nsa.comment.repo.CommentRepository;
 import com.nsa.comment.utils.CommentState;
-import com.nsa.comment.utils.TemplateResponseEntity;
+
 
 @RestController
 //@EnableWebSecurity

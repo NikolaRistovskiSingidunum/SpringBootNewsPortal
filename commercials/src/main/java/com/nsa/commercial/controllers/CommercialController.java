@@ -74,12 +74,12 @@ public class CommercialController {
 	public ResponseEntity<Commercial> update(Authentication authentication, Commercial commercial)
 			throws IllegalStateException, IOException {
 
-		// author koji je promenio vest
+		// author koji je promenio reklamu
 		AuthUserDetails userDetails = (AuthUserDetails) (authentication.getPrincipal());
 		Integer adminID = userDetails.getAdminID();
 		commercial.setAdminID(adminID);
 
-		// promenjenje vest imaju status neodobrene
+		
 		Commercial savedcommercial = commercialRepository.save(commercial);
 		commercial.getImg().transferTo(Paths.get(
 				System.getProperty("user.dir") + "/src/main/resources/static/" + savedcommercial.getCommercialID()));

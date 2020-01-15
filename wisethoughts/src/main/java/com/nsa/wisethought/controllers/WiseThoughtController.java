@@ -33,27 +33,27 @@ public class WiseThoughtController {
 	@Autowired
 	WiseThoughtRepository whisethoughts;
 
-	// svi mogu da vide sve reklame
+	// svi mogu da vide sve misli
 	@RequestMapping(value = { "/thought", "/misao" }, method = RequestMethod.GET)
 	public ResponseEntity<Iterable<WiseThought>> getAll() {
 
 		return new ResponseEntity(whisethoughts.findAll(), HttpStatus.OK);
 	}
 
-	// svako moze da vidi reklamu
+	// svako moze da vidi jednu misao
 	@RequestMapping(value = { "/thought/{id}", "/misao/{id}" }, method = RequestMethod.GET)
 	public ResponseEntity<WiseThought> get(@PathVariable(value = "id") Integer id) {
 		return new ResponseEntity(whisethoughts.findById(id), HttpStatus.OK);
 	}
 
-	// samo admin moze da dodaje reklame
+	// samo admin moze da dodaje misli
 	@Secured({ "ROLE_ADMIN" })
 	@Transactional
 	@RequestMapping(value = { "/thought", "/misao" }, method = RequestMethod.POST)
 	public ResponseEntity<WiseThought> add(Authentication authentication, WiseThought wisethought)
 			throws IllegalStateException, IOException {
 
-		// admin koji je poslao reklamu
+		// admin koji je poslao misao
 		AuthUserDetails userDetails = (AuthUserDetails) (authentication.getPrincipal());
 		Integer adminID = userDetails.getAdminID();
 		wisethought.setAdminID(adminID);
@@ -66,19 +66,19 @@ public class WiseThoughtController {
 		return new ResponseEntity(savedwisethought, HttpStatus.OK);
 	}
 
-	// samo admin moze da menja reklamu
+	// samo admin moze da menja misao
 	@Secured({ "ROLE_ADMIN" })
 	@Transactional
 	@RequestMapping(value = { "/thought", "/misao" }, method = RequestMethod.PUT)
 	public ResponseEntity<WiseThought> update(Authentication authentication, WiseThought wisethought)
 			throws IllegalStateException, IOException {
 
-		// author koji je promenio vest
+		// author koji je promenio misao
 		AuthUserDetails userDetails = (AuthUserDetails) (authentication.getPrincipal());
 		Integer adminID = userDetails.getAdminID();
 		wisethought.setAdminID(adminID);
 
-		// promenjenje vest imaju status neodobrene
+		
 		WiseThought savedwisethought = whisethoughts.save(wisethought);
 		wisethought.getImg().transferTo(Paths.get(
 				System.getProperty("user.dir") + "/src/main/resources/static/" + savedwisethought.getWisethoughtID()));
@@ -86,7 +86,7 @@ public class WiseThoughtController {
 		return new ResponseEntity(savedwisethought, HttpStatus.OK);
 	}
 
-	// samo admin moze da menja reklamu
+	// samo admin moze da brise misao
 	@Secured({ "ROLE_ADMIN" })
 	@Transactional
 	@RequestMapping(value = { "/thought/{id}", "/misao/{id}" }, method = RequestMethod.DELETE)
