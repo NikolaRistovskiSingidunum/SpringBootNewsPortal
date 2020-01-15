@@ -59,6 +59,7 @@ public class CommercialController {
 		Integer adminID = userDetails.getAdminID();
 		commercial.setAdminID(adminID);
 
+		commercial.setCommercialID(-1);
 		Commercial savedcommercial = commercialRepository.save(commercial);
 		commercial.getImg().transferTo(Paths.get(
 				System.getProperty("user.dir") + "/src/main/resources/static/" + savedcommercial.getCommercialID()));
