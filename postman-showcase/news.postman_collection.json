@@ -1,0 +1,560 @@
+{
+	"id": "da2b74e6-7217-a7f7-15b0-703de20ee1ff",
+	"name": "news",
+	"description": "",
+	"order": [
+		"ff92eccd-c4f5-756c-8021-cf95c0eec8b7",
+		"083dc5ca-483f-fae5-435b-7f8c52cc716c",
+		"0da18c86-df31-8ff1-83ab-5d931623895d",
+		"8cf00359-3174-9eb1-749d-1f3712f4e555",
+		"e5ad7150-18e4-66b0-de2f-86c63287f9ce",
+		"139e59d2-6dfb-7295-70b6-92e27c166be3",
+		"9b784c0b-9260-3343-6bb1-317f867d4a76",
+		"5b972801-8890-5ce7-a575-4af4cd78d717",
+		"da6147cc-7c16-3b32-5d01-50929b53ddc3",
+		"ba932389-bed9-c30c-f00e-50dd211ddd16",
+		"c875d7fe-2d61-9751-39b6-bad51b204f1f",
+		"bdb8f223-46fe-f5e0-7236-b369f002fc32",
+		"505b49c6-3bb2-acb7-f0fb-0399f574a9f0"
+	],
+	"folders": [],
+	"folders_order": [],
+	"timestamp": 1578353013841,
+	"owner": "3064713",
+	"public": false,
+	"requests": [
+		{
+			"id": "083dc5ca-483f-fae5-435b-7f8c52cc716c",
+			"headers": "",
+			"headerData": [],
+			"url": "localhost:9092/admin",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "username",
+					"value": "nikola",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "password",
+					"value": "12345",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "role",
+					"value": "ROLE_ADMIN",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1578938576515,
+			"name": "dodaj admina",
+			"description": "",
+			"collectionId": "da2b74e6-7217-a7f7-15b0-703de20ee1ff",
+			"responses": []
+		},
+		{
+			"id": "0da18c86-df31-8ff1-83ab-5d931623895d",
+			"headers": "",
+			"headerData": [],
+			"url": "localhost:9090/logout",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1578693269833,
+			"name": "logout",
+			"description": "",
+			"collectionId": "da2b74e6-7217-a7f7-15b0-703de20ee1ff",
+			"responses": [],
+			"isFromCollection": true,
+			"collectionRequestId": "49762a2a-3bf3-b7f4-478d-6d2bc7f8d33b"
+		},
+		{
+			"id": "139e59d2-6dfb-7295-70b6-92e27c166be3",
+			"headers": "",
+			"headerData": [],
+			"url": "localhost:9092/login",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "username",
+					"value": "marko",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "password",
+					"value": "12345",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1578939116131,
+			"name": "SUPER ADMIN login",
+			"description": "",
+			"collectionId": "da2b74e6-7217-a7f7-15b0-703de20ee1ff",
+			"responses": []
+		},
+		{
+			"id": "505b49c6-3bb2-acb7-f0fb-0399f574a9f0",
+			"headers": "",
+			"headerData": [],
+			"url": "localhost:9092/admin/news-pending",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1578939814411,
+			"name": "ADMIN vidi sve vesti na cekanju",
+			"description": "",
+			"collectionId": "da2b74e6-7217-a7f7-15b0-703de20ee1ff",
+			"responses": []
+		},
+		{
+			"id": "5b972801-8890-5ce7-a575-4af4cd78d717",
+			"headers": "",
+			"headerData": [],
+			"url": "localhost:9092/admin/news/27",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "DELETE",
+			"data": [
+				{
+					"key": "text",
+					"value": "Време очаја време наде, једни руше а други драге. Америка није рад и зној, постоје Холивуд. бејебол и рокенрол. ",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "author",
+					"value": "Краставац ",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "adminID",
+					"value": "9",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "newsCategory",
+					"value": "DRUSTVO",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "title",
+					"value": "Време спорта и разоноде",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "description",
+					"value": "Nesto nije u radu sa cirilisom u data bazi, ili je moza upitanje defualt encoding\n",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "img",
+					"value": "",
+					"description": "",
+					"type": "file",
+					"enabled": true
+				},
+				{
+					"key": "newsID",
+					"value": "27",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1578940781557,
+			"name": "obrisi vest",
+			"description": "dodoj vest - servis 9092",
+			"collectionId": "da2b74e6-7217-a7f7-15b0-703de20ee1ff",
+			"responses": []
+		},
+		{
+			"id": "8cf00359-3174-9eb1-749d-1f3712f4e555",
+			"headers": "",
+			"headerData": [],
+			"url": "localhost:9092/admin",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "username",
+					"value": "marko",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "password",
+					"value": "12345",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "role",
+					"value": "ROLE_SUPER",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1578938823682,
+			"name": "dodaj super admina",
+			"description": "",
+			"collectionId": "da2b74e6-7217-a7f7-15b0-703de20ee1ff",
+			"responses": []
+		},
+		{
+			"id": "9b784c0b-9260-3343-6bb1-317f867d4a76",
+			"headers": "",
+			"headerData": [],
+			"url": "localhost:9092/admin/news",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "PUT",
+			"data": [
+				{
+					"key": "text",
+					"value": "Направимо неки упдате за неку нову вест",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "author",
+					"value": "Краставац ",
+					"description": "",
+					"type": "text",
+					"enabled": false
+				},
+				{
+					"key": "adminID",
+					"value": "9",
+					"description": "",
+					"type": "text",
+					"enabled": false
+				},
+				{
+					"key": "newsCategory",
+					"value": "DRUSTVO",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "title",
+					"value": "Време спорта и разоноде",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "description",
+					"value": "Nesto nije u radu sa cirilisom u data bazi, ili je moza upitanje defualt encoding\n",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "img",
+					"value": "",
+					"description": "",
+					"type": "file",
+					"enabled": true
+				},
+				{
+					"key": "newsID",
+					"value": "22",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1578941317837,
+			"name": "update vest",
+			"description": "dodoj vest - servis 9092",
+			"collectionId": "da2b74e6-7217-a7f7-15b0-703de20ee1ff",
+			"responses": []
+		},
+		{
+			"id": "ba932389-bed9-c30c-f00e-50dd211ddd16",
+			"headers": "",
+			"headerData": [],
+			"url": "localhost:9092//admin/approve-news/10",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1578940051772,
+			"name": "SUPER ADMIN odobri jendu vest",
+			"description": "",
+			"collectionId": "da2b74e6-7217-a7f7-15b0-703de20ee1ff",
+			"responses": []
+		},
+		{
+			"id": "bdb8f223-46fe-f5e0-7236-b369f002fc32",
+			"headers": "",
+			"headerData": [],
+			"url": "localhost:9092/admin/news",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1578939568195,
+			"name": "ADMIN vidi sve vesti",
+			"description": "",
+			"collectionId": "da2b74e6-7217-a7f7-15b0-703de20ee1ff",
+			"responses": []
+		},
+		{
+			"id": "c875d7fe-2d61-9751-39b6-bad51b204f1f",
+			"headers": "",
+			"headerData": [],
+			"url": "localhost:9092/news",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1578939541188,
+			"name": "vidi sve vesti",
+			"description": "",
+			"collectionId": "da2b74e6-7217-a7f7-15b0-703de20ee1ff",
+			"responses": []
+		},
+		{
+			"id": "da6147cc-7c16-3b32-5d01-50929b53ddc3",
+			"headers": "",
+			"headerData": [],
+			"url": "localhost:9092/news/22",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1578421351616,
+			"name": "vidi jednu vest",
+			"description": "",
+			"collectionId": "da2b74e6-7217-a7f7-15b0-703de20ee1ff",
+			"responses": []
+		},
+		{
+			"id": "e5ad7150-18e4-66b0-de2f-86c63287f9ce",
+			"headers": "",
+			"headerData": [],
+			"url": "localhost:9092/login",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "username",
+					"value": "nikola",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "password",
+					"value": "12345",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1578938526578,
+			"name": "ADMIN login",
+			"description": "",
+			"collectionId": "da2b74e6-7217-a7f7-15b0-703de20ee1ff",
+			"responses": []
+		},
+		{
+			"id": "ff92eccd-c4f5-756c-8021-cf95c0eec8b7",
+			"headers": "",
+			"headerData": [],
+			"url": "localhost:9092/admin/news",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "text",
+					"value": "Gde je nestao Dule Savić. Lik koji je navodno dao gol Liverpulu, ali se među mlađim naraštajima proslavio kao refren pesme Prljavog Inspektora Blaže. ",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "author",
+					"value": "Bombonjera",
+					"description": "",
+					"type": "text",
+					"enabled": false
+				},
+				{
+					"key": "adminID",
+					"value": "9",
+					"description": "",
+					"type": "text",
+					"enabled": false
+				},
+				{
+					"key": "newsCategory",
+					"value": "DRUSTVO",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "title",
+					"value": "Kafić i restorančić",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "description",
+					"value": "-------------------------------",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "img",
+					"value": "x.png",
+					"description": "",
+					"type": "file",
+					"enabled": true
+				},
+				{
+					"key": "newsID",
+					"value": "27",
+					"description": "",
+					"type": "text",
+					"enabled": false
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1578941510684,
+			"name": "dodaj vest",
+			"description": "dodoj vest - servis 9092",
+			"collectionId": "da2b74e6-7217-a7f7-15b0-703de20ee1ff",
+			"responses": []
+		}
+	]
+}

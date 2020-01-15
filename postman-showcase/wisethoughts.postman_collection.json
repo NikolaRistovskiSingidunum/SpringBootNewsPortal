@@ -1,0 +1,371 @@
+{
+	"id": "a1544b5e-985c-fa1d-0c71-1de25454a741",
+	"name": "wisethoughts",
+	"description": "",
+	"order": [
+		"68103c99-2a22-4c9d-746f-1960fd78e43c",
+		"8ef28dfc-2b79-38d5-0cba-7b023357d7e9",
+		"af2764d4-b432-3d67-b975-b427c150ad59",
+		"0c933afc-2415-0667-88bf-60ba730b1301",
+		"d4fcde6d-6ed5-d94f-5cb3-4f9d166df79e",
+		"1a7733b4-1330-c953-5ae5-b32a996652b6",
+		"421af532-feb8-c6dd-045b-c115ef9cb132",
+		"1d5d030d-653e-674b-97e9-965ce6fe96f2"
+	],
+	"folders": [],
+	"folders_order": [],
+	"timestamp": 1579125097890,
+	"owner": "3064713",
+	"public": false,
+	"requests": [
+		{
+			"id": "0c933afc-2415-0667-88bf-60ba730b1301",
+			"headers": "",
+			"headerData": [],
+			"url": "localhost:9094/admin",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "username",
+					"value": "nikola",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "password",
+					"value": "12345",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "role",
+					"value": "ROLE_ADMIN",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1579128067873,
+			"name": "add admin",
+			"description": "",
+			"collectionId": "a1544b5e-985c-fa1d-0c71-1de25454a741",
+			"responses": []
+		},
+		{
+			"id": "1a7733b4-1330-c953-5ae5-b32a996652b6",
+			"headers": "",
+			"headerData": [],
+			"url": "localhost:9094/misao",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "PUT",
+			"data": [
+				{
+					"key": "username",
+					"value": "nikola",
+					"description": "",
+					"type": "text",
+					"enabled": false
+				},
+				{
+					"key": "password",
+					"value": "12345",
+					"description": "",
+					"type": "text",
+					"enabled": false
+				},
+				{
+					"key": "role",
+					"value": "ROLE_ADMIN",
+					"description": "",
+					"type": "text",
+					"enabled": false
+				},
+				{
+					"key": "text",
+					"value": "Ko rano rano taj prvi doruckuje. ",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "title",
+					"value": "ovo je zamisljeno da bude kratki naslov",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "description",
+					"value": "ovo je zamisljeno da bude kratki opis",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "img",
+					"value": "Untitled.png",
+					"description": "",
+					"type": "file",
+					"enabled": true
+				},
+				{
+					"key": "wisethoughtID",
+					"value": "14",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1579128069777,
+			"name": "Admin izmeni misao",
+			"description": "",
+			"collectionId": "a1544b5e-985c-fa1d-0c71-1de25454a741",
+			"responses": []
+		},
+		{
+			"id": "1d5d030d-653e-674b-97e9-965ce6fe96f2",
+			"headers": "",
+			"headerData": [],
+			"url": "localhost:9094/logout",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": [
+				{
+					"key": "username",
+					"value": "nikola",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "password",
+					"value": "12345",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "role",
+					"value": "ROLE_ADMIN",
+					"description": "",
+					"type": "text",
+					"enabled": false
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1579128071762,
+			"name": "ADMIN logout",
+			"description": "",
+			"collectionId": "a1544b5e-985c-fa1d-0c71-1de25454a741",
+			"responses": []
+		},
+		{
+			"id": "421af532-feb8-c6dd-045b-c115ef9cb132",
+			"headers": "",
+			"headerData": [],
+			"url": "localhost:9094/login",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "username",
+					"value": "nikola",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "password",
+					"value": "12345",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "role",
+					"value": "ROLE_ADMIN",
+					"description": "",
+					"type": "text",
+					"enabled": false
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1579128070648,
+			"name": "ADMIN Login",
+			"description": "",
+			"collectionId": "a1544b5e-985c-fa1d-0c71-1de25454a741",
+			"responses": []
+		},
+		{
+			"id": "68103c99-2a22-4c9d-746f-1960fd78e43c",
+			"headers": "",
+			"headerData": [],
+			"url": "localhost:9094/misao/14",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1579128065377,
+			"name": "vidi jednu misao",
+			"description": "",
+			"collectionId": "a1544b5e-985c-fa1d-0c71-1de25454a741",
+			"responses": []
+		},
+		{
+			"id": "8ef28dfc-2b79-38d5-0cba-7b023357d7e9",
+			"headers": "",
+			"headerData": [],
+			"url": "localhost:9094/misao/14",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "DELETE",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1579128066225,
+			"name": "obrisi jednu misao",
+			"description": "",
+			"collectionId": "a1544b5e-985c-fa1d-0c71-1de25454a741",
+			"responses": []
+		},
+		{
+			"id": "af2764d4-b432-3d67-b975-b427c150ad59",
+			"headers": "",
+			"headerData": [],
+			"url": "localhost:9094/misao",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1579128067025,
+			"name": "vidi sve misli",
+			"description": "",
+			"collectionId": "a1544b5e-985c-fa1d-0c71-1de25454a741",
+			"responses": []
+		},
+		{
+			"id": "d4fcde6d-6ed5-d94f-5cb3-4f9d166df79e",
+			"headers": "",
+			"headerData": [],
+			"url": "localhost:9094/misao",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "username",
+					"value": "nikola",
+					"description": "",
+					"type": "text",
+					"enabled": false
+				},
+				{
+					"key": "password",
+					"value": "12345",
+					"description": "",
+					"type": "text",
+					"enabled": false
+				},
+				{
+					"key": "role",
+					"value": "ROLE_ADMIN",
+					"description": "",
+					"type": "text",
+					"enabled": false
+				},
+				{
+					"key": "text",
+					"value": "Ko rano rano taj prvi doruckuje. ",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "title",
+					"value": "ovo je zamisljeno da bude kratki naslov",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "description",
+					"value": "ovo je zamisljeno da bude kratki opis",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "img",
+					"value": "x.png",
+					"description": "",
+					"type": "file",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1579128068961,
+			"name": "Admin dodaj misao",
+			"description": "",
+			"collectionId": "a1544b5e-985c-fa1d-0c71-1de25454a741",
+			"responses": []
+		}
+	]
+}
